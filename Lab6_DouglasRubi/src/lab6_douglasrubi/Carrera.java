@@ -12,9 +12,6 @@ public class Carrera {
     String Facultad;
     double Mensualidad;
     String Jefe_Carrera;
-    ArrayList <Ingenieria> Ingenieria = new ArrayList();
-    ArrayList <Ciencia_Salud> Ciencia_Salud= new ArrayList();
-    ArrayList <Licenciatura> Licenciatura= new ArrayList();
     
     public Carrera() {
     }
