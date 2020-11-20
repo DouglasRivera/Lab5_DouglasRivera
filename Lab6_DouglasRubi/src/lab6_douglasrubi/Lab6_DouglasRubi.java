@@ -16,6 +16,7 @@ public class Lab6_DouglasRubi {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new MENU().setVisible(true);
     }
     
 }

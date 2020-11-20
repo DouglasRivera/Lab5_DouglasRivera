@@ -16,7 +16,8 @@ public class Maestros extends Persona {
     public Maestros() {
     }
 
-    public Maestros(int ListaClases) {
+    public Maestros(String Nombre, String Apellido, int Edad, String Genero , int ListaClases) {
+        super(Nombre,  Apellido,  Edad,  Genero);
         this.ListaClases = ListaClases;
     }
 

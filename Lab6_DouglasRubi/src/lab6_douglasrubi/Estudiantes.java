@@ -15,8 +15,8 @@ public class Estudiantes extends Persona {
     public Estudiantes() {
     }
 
-    public Estudiantes(int NumeroCuenta, String Carrera) {
-
+    public Estudiantes(String Nombre, String Apellido, int Edad, String Genero,int NumeroCuenta, String Carrera) {
+        super(Nombre, Apellido, Edad, Genero);
         this.NumeroCuenta = NumeroCuenta;
         this.Carrera = Carrera;
     }
