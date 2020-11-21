@@ -103,6 +103,10 @@ public class MENU extends javax.swing.JFrame {
         JlistCa = new javax.swing.JList<>();
         jScrollPane8 = new javax.swing.JScrollPane();
         JlistC = new javax.swing.JList<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -256,26 +260,38 @@ public class MENU extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(jlistE);
 
-        JlistM.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        JlistM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                JlistMMouseReleased(evt);
+            }
         });
         jScrollPane6.setViewportView(JlistM);
 
-        JlistCa.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        JlistCa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                JlistCaMouseReleased(evt);
+            }
         });
         jScrollPane7.setViewportView(JlistCa);
 
-        JlistC.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        JlistC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                JlistCMouseReleased(evt);
+            }
         });
         jScrollPane8.setViewportView(JlistC);
+
+        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
+        jLabel7.setText("Estudiantes");
+
+        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
+        jLabel8.setText("Maestros");
+
+        jLabel9.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
+        jLabel9.setText("Carreras");
+
+        jLabel10.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
+        jLabel10.setText("Clases");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -322,10 +338,6 @@ public class MENU extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jlbNombreM)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(TxtNombreM, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
@@ -336,7 +348,13 @@ public class MENU extends javax.swing.JFrame {
                                             .addGap(35, 35, 35)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(TxtApellidoM)
-                                        .addComponent(TxtEdadM, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(TxtEdadM, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jlbNombreM)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel8)
+                                        .addComponent(TxtNombreM, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(JlbGeneroM)
@@ -393,7 +411,13 @@ public class MENU extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(281, 281, 281)
                                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(144, 144, 144))))
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(145, 145, 145)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel10)
+                                .addGap(94, 94, 94))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -407,11 +431,21 @@ public class MENU extends javax.swing.JFrame {
                                 .addGap(88, 88, 88)
                                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jLabel7)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -464,7 +498,7 @@ public class MENU extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addComponent(TxtSalonC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -513,7 +547,7 @@ public class MENU extends javax.swing.JFrame {
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane5)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -665,6 +699,7 @@ public class MENU extends javax.swing.JFrame {
             modelo.addElement(Car);
             this.jlistE.setModel(modelo);
         }
+        
     }//GEN-LAST:event_btnAgregarCaActionPerformed
 
     private void rbtnSiCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSiCActionPerformed
@@ -717,6 +752,24 @@ public class MENU extends javax.swing.JFrame {
             jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_jlistEMouseReleased
+
+    private void JlistMMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlistMMouseReleased
+         if(evt.getButton()== MouseEvent.BUTTON3){
+            jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_JlistMMouseReleased
+
+    private void JlistCaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlistCaMouseReleased
+         if(evt.getButton()== MouseEvent.BUTTON3){
+            jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_JlistCaMouseReleased
+
+    private void JlistCMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlistCMouseReleased
+         if(evt.getButton()== MouseEvent.BUTTON3){
+            jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_JlistCMouseReleased
 
 /**
  * @param args the command line arguments
@@ -799,11 +852,15 @@ public static void main(String args[]) {
     private javax.swing.JButton btnAgregarE;
     private javax.swing.JButton btnAgregarM;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
