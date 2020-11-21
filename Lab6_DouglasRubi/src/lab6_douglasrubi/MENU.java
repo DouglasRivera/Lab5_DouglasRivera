@@ -5,8 +5,10 @@
  */
 package lab6_douglasrubi;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -20,14 +22,15 @@ public class MENU extends javax.swing.JFrame {
      * Creates new form MENU
      */
     DefaultMutableTreeNode rootEstudiantes;
+
     public MENU() {
         initComponents();
         rootEstudiantes = new DefaultMutableTreeNode("Estudiantes");
-        
-        
-        
+        jPopupMenu1.add(new JMenuItem("Editar", null));
+        jPopupMenu1.add(new JMenuItem("Eliminar", null));
     }
     private String Genero = "";
+    private String AireC = "";
     private ArrayList<Estudiantes> Estudiantes = new ArrayList<>();
     private ArrayList<Maestros> Maestro = new ArrayList<>();
     private ArrayList<Carrera> Carrera = new ArrayList<>();
@@ -42,6 +45,7 @@ public class MENU extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         JlbNombreA = new javax.swing.JLabel();
@@ -203,8 +207,18 @@ public class MENU extends javax.swing.JFrame {
         jLabel6.setText("Aire Acondicionado");
 
         rbtnSiC.setText("Si");
+        rbtnSiC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnSiCActionPerformed(evt);
+            }
+        });
 
         rbtnNoC.setText("No");
+        rbtnNoC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnNoCActionPerformed(evt);
+            }
+        });
 
         btnAgregarE.setText("AgregarE");
         btnAgregarE.addActionListener(new java.awt.event.ActionListener() {
@@ -228,8 +242,18 @@ public class MENU extends javax.swing.JFrame {
         });
 
         btnAgregarC.setText("AgregarC");
+        btnAgregarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarCActionPerformed(evt);
+            }
+        });
 
         jlistE.setModel(new DefaultListModel());
+        jlistE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jlistEMouseReleased(evt);
+            }
+        });
         jScrollPane5.setViewportView(jlistE);
 
         JlistM.setModel(new javax.swing.AbstractListModel<String>() {
@@ -498,7 +522,7 @@ public class MENU extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TxtNombreEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNombreEActionPerformed
-        
+
     }//GEN-LAST:event_TxtNombreEActionPerformed
 
     private void rbtnFEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFEActionPerformed
@@ -508,7 +532,7 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnFEActionPerformed
 
     private void TxtNombreMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNombreMActionPerformed
-        
+
     }//GEN-LAST:event_TxtNombreMActionPerformed
 
     private void rbtnFMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFMActionPerformed
@@ -518,22 +542,22 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnFMActionPerformed
 
     private void TxtNombreCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNombreCActionPerformed
-        
+
     }//GEN-LAST:event_TxtNombreCActionPerformed
 
     private void TxtJefeCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtJefeCActionPerformed
-       
+
     }//GEN-LAST:event_TxtJefeCActionPerformed
 
     private void TxtClaseCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtClaseCActionPerformed
-        
+
     }//GEN-LAST:event_TxtClaseCActionPerformed
 
     private void btnAgregarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEActionPerformed
         boolean valido = true;
         if (this.TxtNombreE.getText() == null || "".equals(this.TxtNombreE.getText())) {
             JOptionPane.showConfirmDialog(this, "Ingrese el nombre");
-           valido = false;
+            valido = false;
         }
         if (this.TxtApellidosE.getText() == null || "".equals(this.TxtApellidosE.getText())) {
             JOptionPane.showConfirmDialog(this, "Ingrese el apellido");
@@ -555,16 +579,15 @@ public class MENU extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(this, "Ingrese la carrera");
             valido = false;
         }
-        if(valido) {
+        if (valido) {
             // String Nombre, String Apellido, int Edad, String Genero,int NumeroCuenta, String Carrera
-            Estudiantes estu = new Estudiantes(TxtNombreE.getText(), TxtApellidosE.getText(), Integer.parseInt(TxtEdadE.getText()),  this.Genero, Integer.parseInt(TxtCuentaE.getText()), TxtCarreraE.getText());
+            Estudiantes estu = new Estudiantes(TxtNombreE.getText(), TxtApellidosE.getText(), Integer.parseInt(TxtEdadE.getText()), this.Genero, Integer.parseInt(TxtCuentaE.getText()), TxtCarreraE.getText());
             this.Estudiantes.add(estu);
             DefaultListModel modelo
-                = (DefaultListModel) jlistE.getModel();
+                    = (DefaultListModel) jlistE.getModel();
 
             modelo.addElement(estu);
             this.jlistE.setModel(modelo);
-           
 
         }
     }//GEN-LAST:event_btnAgregarEActionPerformed
@@ -579,7 +602,7 @@ public class MENU extends javax.swing.JFrame {
         boolean valido = true;
         if (this.TxtNombreM.getText() == null || "".equals(this.TxtNombreM.getText())) {
             JOptionPane.showConfirmDialog(this, "Ingrese el nombre");
-           valido = false;
+            valido = false;
         }
         if (this.TxtApellidoM.getText() == null || "".equals(this.TxtApellidoM.getText())) {
             JOptionPane.showConfirmDialog(this, "Ingrese el apellido");
@@ -597,15 +620,14 @@ public class MENU extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(this, "Ingrese la lista de clases");
             valido = false;
         }
-        if(valido) {
-            Maestros Mr = new Maestros(TxtNombreM.getText(), TxtApellidoM.getText(), Integer.parseInt(TxtEdadE.getText()),  this.Genero, Integer.parseInt(TxtClasesM.getText()));
+        if (valido) {
+            Maestros Mr = new Maestros(TxtNombreM.getText(), TxtApellidoM.getText(), Integer.parseInt(TxtEdadE.getText()), this.Genero, Integer.parseInt(TxtClasesM.getText()));
             this.Maestro.add(Mr);
             DefaultListModel modelo
-                = (DefaultListModel) jlistE.getModel();
+                    = (DefaultListModel) JlistM.getModel();
 
             modelo.addElement(Mr);
             this.jlistE.setModel(modelo);
-           
 
         }
     }//GEN-LAST:event_btnAgregarMActionPerformed
@@ -617,10 +639,10 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnMMActionPerformed
 
     private void btnAgregarCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCaActionPerformed
-         boolean valido = true;
+        boolean valido = true;
         if (this.TxtNombreC.getText() == null || "".equals(this.TxtNombreC.getText())) {
             JOptionPane.showConfirmDialog(this, "Ingrese el nombre");
-           valido = false;
+            valido = false;
         }
         if (this.TxtFacultadC.getText() == null || "".equals(this.TxtFacultadC.getText())) {
             JOptionPane.showConfirmDialog(this, "Ingrese la facultad");
@@ -634,21 +656,72 @@ public class MENU extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(this, "Ingrese el jefe de carrera");
             valido = false;
         }
-        if(valido) {
+        if (valido) {
             Carrera Car = new Carrera(TxtNombreC.getText(), TxtFacultadC.getText(), Integer.parseInt(TxtMensualidadC.getText()), TxtJefeC.getText());
             this.Carrera.add(Car);
             DefaultListModel modelo
-                = (DefaultListModel) jlistE.getModel();
+                    = (DefaultListModel) JlistCa.getModel();
 
             modelo.addElement(Car);
             this.jlistE.setModel(modelo);
         }
     }//GEN-LAST:event_btnAgregarCaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void rbtnSiCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSiCActionPerformed
+        if (this.rbtnSiC.isSelected()) {
+            this.Genero = "Si";
+        }
+    }//GEN-LAST:event_rbtnSiCActionPerformed
+
+    private void rbtnNoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnNoCActionPerformed
+        if (this.rbtnNoC.isSelected()) {
+            this.Genero = "No";
+        }
+    }//GEN-LAST:event_rbtnNoCActionPerformed
+
+    private void btnAgregarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCActionPerformed
+        boolean valido = true;
+        if (this.TxtClaseC.getText() == null || "".equals(this.TxtClaseC.getText())) {
+            JOptionPane.showConfirmDialog(this, "Ingrese el nombre de la clase");
+            valido = false;
+        }
+        if (this.TxtSeccionC.getText() == null || "".equals(this.TxtSeccionC.getText())) {
+            JOptionPane.showConfirmDialog(this, "Ingrese la seccion");
+            valido = false;
+        }
+        if (this.TxtEdificioC.getText() == null || "".equals(this.TxtEdificioC.getText())) {
+            JOptionPane.showConfirmDialog(this, "Ingrese el edificio");
+            valido = false;
+        }
+        if (this.TxtSalonC.getText() == null || "".equals(this.TxtSalonC.getText())) {
+            JOptionPane.showConfirmDialog(this, "Ingrese el salon");
+            valido = false;
+        }
+        if (this.AireC == null || "".equals(this.AireC)) {
+            JOptionPane.showConfirmDialog(this, "Ingrese si hay Aire acondicionado");
+            valido = false;
+        }
+        if (valido) {
+            Clases Cl = new Clases(TxtClaseC.getText(), TxtSeccionC.getText(), Integer.parseInt(TxtEdificioC.getText()), TxtSalonC.getText(),"");
+            this.Clases.add(Cl);
+            DefaultListModel modelo
+                    = (DefaultListModel) JlistC.getModel();
+
+            modelo.addElement(Cl);
+            this.jlistE.setModel(modelo);
+        }
+    }//GEN-LAST:event_btnAgregarCActionPerformed
+
+    private void jlistEMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistEMouseReleased
+        if(evt.getButton()== MouseEvent.BUTTON3){
+            jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_jlistEMouseReleased
+
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -659,16 +732,28 @@ public class MENU extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MENU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MENU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MENU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MENU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MENU.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MENU.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MENU.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MENU.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -719,6 +804,7 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
