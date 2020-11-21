@@ -54,5 +54,10 @@ public class Carrera {
     public void setJefe_Carrera(String Jefe_Carrera) {
         this.Jefe_Carrera = Jefe_Carrera;
     }
+
+    @Override
+    public String toString() {
+        return "" + Nombre + "-" + Facultad + "-" + Jefe_Carrera;
+    }
     
 }

@@ -28,5 +28,10 @@ public class Maestros extends Persona {
     public void setListaClases(int ListaClases) {
         this.ListaClases = ListaClases;
     }
+
+    @Override
+    public String toString() {
+        return "" + ListaClases;
+    }
     
 }

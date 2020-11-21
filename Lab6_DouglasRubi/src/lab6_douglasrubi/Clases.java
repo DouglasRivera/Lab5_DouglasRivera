@@ -66,5 +66,10 @@ public class Clases {
     public void setAireC(String AireC) {
         this.AireC = AireC;
     }
+
+    @Override
+    public String toString() {
+        return "" + Nombre + "-" + Edificio ;
+    }
     
 }

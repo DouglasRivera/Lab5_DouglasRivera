@@ -5,6 +5,8 @@
  */
 package lab6_douglasrubi;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -26,9 +28,37 @@ public class MENU extends javax.swing.JFrame {
     public MENU() {
         initComponents();
         rootEstudiantes = new DefaultMutableTreeNode("Estudiantes");
-        jPopupMenu1.add(new JMenuItem("Editar", null));
-        jPopupMenu1.add(new JMenuItem("Eliminar", null));
+        JMenuItem editar = new JMenuItem("Editar", null);
+        JMenuItem eliminar = new JMenuItem("Eliminar", null);
+        jPopupMenu1.add(editar);
+        jPopupMenu1.add(eliminar);
+        editar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+              
+            String seleccionado = ((Estudiantes) jlistE.getModel().getElementAt(indiceEstudiante)).Nombre;
+            for (int i = 0; i < Estudiantes.size(); i++) {
+                if (Estudiantes.get(i).Nombre.equals(seleccionado)) {
+                    TxtNombreE.setText(Estudiantes.get(i).Nombre);
+                    TxtApellidosE.setText(Estudiantes.get(i).Apellido);                   
+                    TxtEdadE.setText(Estudiantes.get(i).Edad + "");
+                    if (((Estudiantes) Estudiantes.get(i)).Genero.equals("F")) {
+                        rbtnFE.setSelected(true);
+                    } else {
+                        rbtnME.setSelected(true);
+                    }
+                    TxtCuentaE.setText(Estudiantes.get(i).NumeroCuenta + "");
+                    
+                }
+            }
+        
+            }
+        });
+        
+        
     }
+    
+    private int indiceEstudiante = 0;
     private String Genero = "";
     private String AireC = "";
     private ArrayList<Estudiantes> Estudiantes = new ArrayList<>();
@@ -256,6 +286,11 @@ public class MENU extends javax.swing.JFrame {
         jlistE.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jlistEMouseReleased(evt);
+            }
+        });
+        jlistE.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jlistEValueChanged(evt);
             }
         });
         jScrollPane5.setViewportView(jlistE);
@@ -748,6 +783,13 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarCActionPerformed
 
     private void jlistEMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistEMouseReleased
+         if (evt.isPopupTrigger()) { //if the event shows the menu
+            jlistE.setSelectedIndex(jlistE.locationToIndex(evt.getPoint())); //select the item
+             System.out.println(jlistE.getSelectedIndex());
+             indiceEstudiante = jlistE.getSelectedIndex();
+            jPopupMenu1.show(jlistE, evt.getX(), evt.getY()); //and show the menu
+            
+        }
         if(evt.getButton()== MouseEvent.BUTTON3){
             jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
         }
@@ -770,6 +812,11 @@ public class MENU extends javax.swing.JFrame {
             jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_JlistCMouseReleased
+
+    private void jlistEValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jlistEValueChanged
+        /*indiceEstudiante = evt.getLastIndex();
+        System.out.println(indiceEstudiante);*/
+    }//GEN-LAST:event_jlistEValueChanged
 
 /**
  * @param args the command line arguments

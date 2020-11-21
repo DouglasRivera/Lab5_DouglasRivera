@@ -56,5 +56,10 @@ public abstract class Persona {
     public void setGenero(String Genero) {
         this.Genero = Genero;
     }
+
+    @Override
+    public String toString() {
+        return "" + Nombre + " " + Apellido + ' ';
+    }
    
 }
